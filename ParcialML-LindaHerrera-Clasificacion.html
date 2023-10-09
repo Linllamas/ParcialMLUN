@@ -1,0 +1,2669 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ejercicio de Clasificación &#8212; Parcial - Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ParcialML-LindaHerrera-Clasificacion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ejercicio de Regresión" href="ParcialML-LindaHerrera-Regresion-V3.html" />
+    <link rel="prev" title="Parcial ML" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Parcial - Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Parcial ML
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio de Clasificación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ParcialML-LindaHerrera-Regresion-V3.html">Ejercicio de Regresión</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FParcialML-LindaHerrera-Clasificacion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ParcialML-LindaHerrera-Clasificacion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ejercicio de Clasificación</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-analisis-exploratorio-de-datos">EDA - Análisis Exploratorio de Datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-datos-y-librerias">Descargar datos y librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-y-limpieza-de-datos">Exploración y limpieza de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-y-analisis-de-variables">Visualización y Análisis de variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-clasificacion">Modelos de Clasificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-k-nn">Modelo K-NN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge">Modelo Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lasso">Modelo Lasso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-naive-bayes">Modelo Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboots">Modelo XGBoots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-svm">Modelo SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-mpl">Modelo MPL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-de-los-modelos">Resultados de los Modelos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejor-modelo-basado-en-la-metrica-auc">Mejor modelo basado en la metrica AUC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones">Conclusiones</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-de-clasificacion">
+<h1>Ejercicio de Clasificación<a class="headerlink" href="#ejercicio-de-clasificacion" title="Permalink to this heading">#</a></h1>
+<section id="eda-analisis-exploratorio-de-datos">
+<h2>EDA - Análisis Exploratorio de Datos<a class="headerlink" href="#eda-analisis-exploratorio-de-datos" title="Permalink to this heading">#</a></h2>
+<section id="descargar-datos-y-librerias">
+<h3>Descargar datos y librerías<a class="headerlink" href="#descargar-datos-y-librerias" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Librerías</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">import</span> <span class="nn">mglearn</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.outliers_influence</span> <span class="kn">import</span> <span class="n">variance_inflation_factor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Descargar datos en 2 variables</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archivo1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/ProgramasML/ParcialMLUN/docs/train_identity.csv&#39;</span><span class="p">)</span>
+<span class="n">archivo2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/ProgramasML/ParcialMLUN/docs/train_transaction.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploracion-y-limpieza-de-datos">
+<h3>Exploración y limpieza de datos<a class="headerlink" href="#exploracion-y-limpieza-de-datos" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Hacer merge para guardar los ambos archivos csv como un solo dataframe</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">archivo1</span><span class="p">,</span><span class="n">archivo2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;TransactionID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Descripción de tipos de variables</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 144233 entries, 0 to 144232
+Columns: 434 entries, TransactionID to V339
+dtypes: float64(399), int64(4), object(31)
+memory usage: 477.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tenemos un conjunto de datos que se compone de 141.233 filas u observaciones con 433 columnas o características, 399 son reales (float), 4 son enteros y 31 tipo object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columnas_enteras</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># Imprimir las columnas enteras</span>
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">columnas_enteras</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TransactionID
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>isFraud
+TransactionDT
+card1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columnas_enteras</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># Imprimir las columnas tipo object</span>
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">columnas_enteras</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id_12
+id_15
+id_16
+id_23
+id_27
+id_28
+id_29
+id_30
+id_31
+id_33
+id_34
+id_35
+id_36
+id_37
+id_38
+DeviceType
+DeviceInfo
+ProductCD
+card4
+card6
+P_emaildomain
+R_emaildomain
+M1
+M2
+M3
+M4
+M5
+M6
+M7
+M8
+M9
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Verificar la existencia datos faltantes en nuestro conjunto de datos.</p></li>
+</ul>
+<p>Columnas y cantidad de datos nulos por columna:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TransactionID        0
+id_01                0
+id_02             3361
+id_03            77909
+id_04            77909
+                 ...  
+V335             62192
+V336             62192
+V337             62192
+V338             62192
+V339             62192
+Length: 434, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Porcentaje de datos nulos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener la cantidad de valores nulos en cada columna</span>
+<span class="n">valores_nulos_por_columna</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Filtrar las columnas que tienen valores nulos</span>
+<span class="n">columnas_con_datos_faltantes</span> <span class="o">=</span> <span class="n">valores_nulos_por_columna</span><span class="p">[</span><span class="n">valores_nulos_por_columna</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">columnas_sin_datos_faltantes</span> <span class="o">=</span> <span class="n">valores_nulos_por_columna</span><span class="p">[</span><span class="n">valores_nulos_por_columna</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Número total de filas en el DataFrame</span>
+<span class="n">numero_total_filas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datatrain</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las columnas con datos faltantes, la cantidad de valores nulos y el porcentaje de datos faltantes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas con datos faltantes y </span><span class="si">% d</span><span class="s2">e datos faltantes&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">columna</span><span class="p">,</span> <span class="n">cantidad_nulos</span> <span class="ow">in</span> <span class="n">columnas_con_datos_faltantes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">porcentaje_datos_faltantes</span> <span class="o">=</span> <span class="p">(</span><span class="n">cantidad_nulos</span> <span class="o">/</span> <span class="n">numero_total_filas</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columna &#39;</span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">cantidad_nulos</span><span class="si">}</span><span class="s2"> valores nulos (</span><span class="si">{</span><span class="n">porcentaje_datos_faltantes</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas con datos faltantes y % de datos faltantes
+Columna &#39;id_02&#39;: 3361 valores nulos (2.33%)
+Columna &#39;id_03&#39;: 77909 valores nulos (54.02%)
+Columna &#39;id_04&#39;: 77909 valores nulos (54.02%)
+Columna &#39;id_05&#39;: 7368 valores nulos (5.11%)
+Columna &#39;id_06&#39;: 7368 valores nulos (5.11%)
+Columna &#39;id_07&#39;: 139078 valores nulos (96.43%)
+Columna &#39;id_08&#39;: 139078 valores nulos (96.43%)
+Columna &#39;id_09&#39;: 69307 valores nulos (48.05%)
+Columna &#39;id_10&#39;: 69307 valores nulos (48.05%)
+Columna &#39;id_11&#39;: 3255 valores nulos (2.26%)
+Columna &#39;id_13&#39;: 16913 valores nulos (11.73%)
+Columna &#39;id_14&#39;: 64189 valores nulos (44.50%)
+Columna &#39;id_15&#39;: 3248 valores nulos (2.25%)
+Columna &#39;id_16&#39;: 14893 valores nulos (10.33%)
+Columna &#39;id_17&#39;: 4864 valores nulos (3.37%)
+Columna &#39;id_18&#39;: 99120 valores nulos (68.72%)
+Columna &#39;id_19&#39;: 4915 valores nulos (3.41%)
+Columna &#39;id_20&#39;: 4972 valores nulos (3.45%)
+Columna &#39;id_21&#39;: 139074 valores nulos (96.42%)
+Columna &#39;id_22&#39;: 139064 valores nulos (96.42%)
+Columna &#39;id_23&#39;: 139064 valores nulos (96.42%)
+Columna &#39;id_24&#39;: 139486 valores nulos (96.71%)
+Columna &#39;id_25&#39;: 139101 valores nulos (96.44%)
+Columna &#39;id_26&#39;: 139070 valores nulos (96.42%)
+Columna &#39;id_27&#39;: 139064 valores nulos (96.42%)
+Columna &#39;id_28&#39;: 3255 valores nulos (2.26%)
+Columna &#39;id_29&#39;: 3255 valores nulos (2.26%)
+Columna &#39;id_30&#39;: 66668 valores nulos (46.22%)
+Columna &#39;id_31&#39;: 3951 valores nulos (2.74%)
+Columna &#39;id_32&#39;: 66647 valores nulos (46.21%)
+Columna &#39;id_33&#39;: 70944 valores nulos (49.19%)
+Columna &#39;id_34&#39;: 66428 valores nulos (46.06%)
+Columna &#39;id_35&#39;: 3248 valores nulos (2.25%)
+Columna &#39;id_36&#39;: 3248 valores nulos (2.25%)
+Columna &#39;id_37&#39;: 3248 valores nulos (2.25%)
+Columna &#39;id_38&#39;: 3248 valores nulos (2.25%)
+Columna &#39;DeviceType&#39;: 3423 valores nulos (2.37%)
+Columna &#39;DeviceInfo&#39;: 25567 valores nulos (17.73%)
+Columna &#39;card2&#39;: 902 valores nulos (0.63%)
+Columna &#39;card3&#39;: 172 valores nulos (0.12%)
+Columna &#39;card4&#39;: 184 valores nulos (0.13%)
+Columna &#39;card5&#39;: 956 valores nulos (0.66%)
+Columna &#39;card6&#39;: 178 valores nulos (0.12%)
+Columna &#39;addr1&#39;: 60447 valores nulos (41.91%)
+Columna &#39;addr2&#39;: 60447 valores nulos (41.91%)
+Columna &#39;dist1&#39;: 144233 valores nulos (100.00%)
+Columna &#39;dist2&#39;: 106640 valores nulos (73.94%)
+Columna &#39;P_emaildomain&#39;: 13391 valores nulos (9.28%)
+Columna &#39;R_emaildomain&#39;: 13150 valores nulos (9.12%)
+Columna &#39;D1&#39;: 218 valores nulos (0.15%)
+Columna &#39;D2&#39;: 113117 valores nulos (78.43%)
+Columna &#39;D3&#39;: 115174 valores nulos (79.85%)
+Columna &#39;D4&#39;: 79465 valores nulos (55.09%)
+Columna &#39;D5&#39;: 111158 valores nulos (77.07%)
+Columna &#39;D6&#39;: 76860 valores nulos (53.29%)
+Columna &#39;D7&#39;: 108093 valores nulos (74.94%)
+Columna &#39;D8&#39;: 69307 valores nulos (48.05%)
+Columna &#39;D9&#39;: 69307 valores nulos (48.05%)
+Columna &#39;D10&#39;: 75001 valores nulos (52.00%)
+Columna &#39;D11&#39;: 144233 valores nulos (100.00%)
+Columna &#39;D12&#39;: 85324 valores nulos (59.16%)
+Columna &#39;D13&#39;: 82297 valores nulos (57.06%)
+Columna &#39;D14&#39;: 82068 valores nulos (56.90%)
+Columna &#39;D15&#39;: 75916 valores nulos (52.63%)
+Columna &#39;M1&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M2&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M3&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M4&#39;: 83402 valores nulos (57.82%)
+Columna &#39;M5&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M6&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M7&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M8&#39;: 144233 valores nulos (100.00%)
+Columna &#39;M9&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V1&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V2&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V3&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V4&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V5&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V6&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V7&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V8&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V9&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V10&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V11&#39;: 144233 valores nulos (100.00%)
+Columna &#39;V12&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V13&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V14&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V15&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V16&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V17&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V18&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V19&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V20&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V21&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V22&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V23&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V24&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V25&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V26&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V27&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V28&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V29&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V30&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V31&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V32&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V33&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V34&#39;: 75052 valores nulos (52.04%)
+Columna &#39;V35&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V36&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V37&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V38&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V39&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V40&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V41&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V42&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V43&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V44&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V45&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V46&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V47&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V48&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V49&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V50&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V51&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V52&#39;: 79488 valores nulos (55.11%)
+Columna &#39;V53&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V54&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V55&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V56&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V57&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V58&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V59&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V60&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V61&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V62&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V63&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V64&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V65&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V66&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V67&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V68&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V69&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V70&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V71&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V72&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V73&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V74&#39;: 76527 valores nulos (53.06%)
+Columna &#39;V75&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V76&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V77&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V78&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V79&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V80&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V81&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V82&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V83&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V84&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V85&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V86&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V87&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V88&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V89&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V90&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V91&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V92&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V93&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V94&#39;: 75967 valores nulos (52.67%)
+Columna &#39;V95&#39;: 64 valores nulos (0.04%)
+Columna &#39;V96&#39;: 64 valores nulos (0.04%)
+Columna &#39;V97&#39;: 64 valores nulos (0.04%)
+Columna &#39;V98&#39;: 64 valores nulos (0.04%)
+Columna &#39;V99&#39;: 64 valores nulos (0.04%)
+Columna &#39;V100&#39;: 64 valores nulos (0.04%)
+Columna &#39;V101&#39;: 64 valores nulos (0.04%)
+Columna &#39;V102&#39;: 64 valores nulos (0.04%)
+Columna &#39;V103&#39;: 64 valores nulos (0.04%)
+Columna &#39;V104&#39;: 64 valores nulos (0.04%)
+Columna &#39;V105&#39;: 64 valores nulos (0.04%)
+Columna &#39;V106&#39;: 64 valores nulos (0.04%)
+Columna &#39;V107&#39;: 64 valores nulos (0.04%)
+Columna &#39;V108&#39;: 64 valores nulos (0.04%)
+Columna &#39;V109&#39;: 64 valores nulos (0.04%)
+Columna &#39;V110&#39;: 64 valores nulos (0.04%)
+Columna &#39;V111&#39;: 64 valores nulos (0.04%)
+Columna &#39;V112&#39;: 64 valores nulos (0.04%)
+Columna &#39;V113&#39;: 64 valores nulos (0.04%)
+Columna &#39;V114&#39;: 64 valores nulos (0.04%)
+Columna &#39;V115&#39;: 64 valores nulos (0.04%)
+Columna &#39;V116&#39;: 64 valores nulos (0.04%)
+Columna &#39;V117&#39;: 64 valores nulos (0.04%)
+Columna &#39;V118&#39;: 64 valores nulos (0.04%)
+Columna &#39;V119&#39;: 64 valores nulos (0.04%)
+Columna &#39;V120&#39;: 64 valores nulos (0.04%)
+Columna &#39;V121&#39;: 64 valores nulos (0.04%)
+Columna &#39;V122&#39;: 64 valores nulos (0.04%)
+Columna &#39;V123&#39;: 64 valores nulos (0.04%)
+Columna &#39;V124&#39;: 64 valores nulos (0.04%)
+Columna &#39;V125&#39;: 64 valores nulos (0.04%)
+Columna &#39;V126&#39;: 64 valores nulos (0.04%)
+Columna &#39;V127&#39;: 64 valores nulos (0.04%)
+Columna &#39;V128&#39;: 64 valores nulos (0.04%)
+Columna &#39;V129&#39;: 64 valores nulos (0.04%)
+Columna &#39;V130&#39;: 64 valores nulos (0.04%)
+Columna &#39;V131&#39;: 64 valores nulos (0.04%)
+Columna &#39;V132&#39;: 64 valores nulos (0.04%)
+Columna &#39;V133&#39;: 64 valores nulos (0.04%)
+Columna &#39;V134&#39;: 64 valores nulos (0.04%)
+Columna &#39;V135&#39;: 64 valores nulos (0.04%)
+Columna &#39;V136&#39;: 64 valores nulos (0.04%)
+Columna &#39;V137&#39;: 64 valores nulos (0.04%)
+Columna &#39;V138&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V139&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V140&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V141&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V142&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V143&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V144&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V145&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V146&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V147&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V148&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V149&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V150&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V151&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V152&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V153&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V154&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V155&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V156&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V157&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V158&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V159&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V160&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V161&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V162&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V163&#39;: 62596 valores nulos (43.40%)
+Columna &#39;V164&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V165&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V166&#39;: 62590 valores nulos (43.40%)
+Columna &#39;V167&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V168&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V169&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V170&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V171&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V172&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V173&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V174&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V175&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V176&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V177&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V178&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V179&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V180&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V181&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V182&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V183&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V184&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V185&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V186&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V187&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V188&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V189&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V190&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V191&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V192&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V193&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V194&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V195&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V196&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V197&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V198&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V199&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V200&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V201&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V202&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V203&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V204&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V205&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V206&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V207&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V208&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V209&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V210&#39;: 4414 valores nulos (3.06%)
+Columna &#39;V211&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V212&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V213&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V214&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V215&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V216&#39;: 4602 valores nulos (3.19%)
+Columna &#39;V217&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V218&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V219&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V220&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V221&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V222&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V223&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V224&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V225&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V226&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V227&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V228&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V229&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V230&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V231&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V232&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V233&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V234&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V235&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V236&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V237&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V238&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V239&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V240&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V241&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V242&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V243&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V244&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V245&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V246&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V247&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V248&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V249&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V250&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V251&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V252&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V253&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V254&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V255&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V256&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V257&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V258&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V259&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V260&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V261&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V262&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V263&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V264&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V265&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V266&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V267&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V268&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V269&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V270&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V271&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V272&#39;: 3127 valores nulos (2.17%)
+Columna &#39;V273&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V274&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V275&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V276&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V277&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V278&#39;: 13964 valores nulos (9.68%)
+Columna &#39;V279&#39;: 2 valores nulos (0.00%)
+Columna &#39;V280&#39;: 2 valores nulos (0.00%)
+Columna &#39;V281&#39;: 218 valores nulos (0.15%)
+Columna &#39;V282&#39;: 218 valores nulos (0.15%)
+Columna &#39;V283&#39;: 218 valores nulos (0.15%)
+Columna &#39;V284&#39;: 2 valores nulos (0.00%)
+Columna &#39;V285&#39;: 2 valores nulos (0.00%)
+Columna &#39;V286&#39;: 2 valores nulos (0.00%)
+Columna &#39;V287&#39;: 2 valores nulos (0.00%)
+Columna &#39;V288&#39;: 218 valores nulos (0.15%)
+Columna &#39;V289&#39;: 218 valores nulos (0.15%)
+Columna &#39;V290&#39;: 2 valores nulos (0.00%)
+Columna &#39;V291&#39;: 2 valores nulos (0.00%)
+Columna &#39;V292&#39;: 2 valores nulos (0.00%)
+Columna &#39;V293&#39;: 2 valores nulos (0.00%)
+Columna &#39;V294&#39;: 2 valores nulos (0.00%)
+Columna &#39;V295&#39;: 2 valores nulos (0.00%)
+Columna &#39;V296&#39;: 218 valores nulos (0.15%)
+Columna &#39;V297&#39;: 2 valores nulos (0.00%)
+Columna &#39;V298&#39;: 2 valores nulos (0.00%)
+Columna &#39;V299&#39;: 2 valores nulos (0.00%)
+Columna &#39;V300&#39;: 218 valores nulos (0.15%)
+Columna &#39;V301&#39;: 218 valores nulos (0.15%)
+Columna &#39;V302&#39;: 2 valores nulos (0.00%)
+Columna &#39;V303&#39;: 2 valores nulos (0.00%)
+Columna &#39;V304&#39;: 2 valores nulos (0.00%)
+Columna &#39;V305&#39;: 2 valores nulos (0.00%)
+Columna &#39;V306&#39;: 2 valores nulos (0.00%)
+Columna &#39;V307&#39;: 2 valores nulos (0.00%)
+Columna &#39;V308&#39;: 2 valores nulos (0.00%)
+Columna &#39;V309&#39;: 2 valores nulos (0.00%)
+Columna &#39;V310&#39;: 2 valores nulos (0.00%)
+Columna &#39;V311&#39;: 2 valores nulos (0.00%)
+Columna &#39;V312&#39;: 2 valores nulos (0.00%)
+Columna &#39;V313&#39;: 218 valores nulos (0.15%)
+Columna &#39;V314&#39;: 218 valores nulos (0.15%)
+Columna &#39;V315&#39;: 218 valores nulos (0.15%)
+Columna &#39;V316&#39;: 2 valores nulos (0.00%)
+Columna &#39;V317&#39;: 2 valores nulos (0.00%)
+Columna &#39;V318&#39;: 2 valores nulos (0.00%)
+Columna &#39;V319&#39;: 2 valores nulos (0.00%)
+Columna &#39;V320&#39;: 2 valores nulos (0.00%)
+Columna &#39;V321&#39;: 2 valores nulos (0.00%)
+Columna &#39;V322&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V323&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V324&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V325&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V326&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V327&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V328&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V329&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V330&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V331&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V332&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V333&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V334&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V335&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V336&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V337&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V338&#39;: 62192 valores nulos (43.12%)
+Columna &#39;V339&#39;: 62192 valores nulos (43.12%)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas sin datos faltantes&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">columnas_sin_datos_faltantes</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas sin datos faltantes
+TransactionID
+id_01
+id_12
+isFraud
+TransactionDT
+TransactionAmt
+ProductCD
+card1
+C1
+C2
+C3
+C4
+C5
+C6
+C7
+C8
+C9
+C10
+C11
+C12
+C13
+C14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Después de verificar la cantidad de datos nulos en el dataset encontramos que muchas de las características tienen un gran porcentaje de datos o filas vacías, lo cual tiene sentido debido a que cada persona tiene diferente cantidad de direcciones o utiliza diferente cantidad de IP, ISP, Proxy, etc., en donde realiza o ha realizado transacciones.</p>
+<p>Con el fin de simplificar el análisis, procederemos a eliminar las columnas que tienen más del 70% de datos nulos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular el porcentaje de datos faltantes para cada columna</span>
+<span class="n">porcentaje_datos_faltantes</span> <span class="o">=</span> <span class="p">(</span><span class="n">valores_nulos_por_columna</span> <span class="o">/</span> <span class="n">numero_total_filas</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Definir un umbral del 30% para filtrar columnas</span>
+<span class="n">umbral</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="c1"># Filtrar las columnas que tienen más del 30% de datos nulos</span>
+<span class="n">columnas_a_eliminar</span> <span class="o">=</span> <span class="n">porcentaje_datos_faltantes</span><span class="p">[</span><span class="n">porcentaje_datos_faltantes</span> <span class="o">&gt;</span> <span class="n">umbral</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># Eliminar las columnas del DataFrame</span>
+<span class="n">datatrain</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columnas_a_eliminar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 144233 entries, 0 to 144232
+Columns: 247 entries, TransactionID to V321
+dtypes: float64(226), int64(4), object(17)
+memory usage: 271.8+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Verificar duplicados</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar filas duplicadas</span>
+<span class="n">duplicados</span> <span class="o">=</span> <span class="n">datatrain</span><span class="p">[</span><span class="n">datatrain</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+
+<span class="c1"># Mostrar las filas duplicadas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filas duplicadas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">duplicados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filas duplicadas:
+Empty DataFrame
+Columns: [TransactionID, id_01, id_02, id_05, id_06, id_11, id_12, id_13, id_15, id_16, id_17, id_19, id_20, id_28, id_29, id_31, id_35, id_36, id_37, id_38, DeviceType, DeviceInfo, isFraud, TransactionDT, TransactionAmt, ProductCD, card1, card2, card3, card4, card5, card6, P_emaildomain, R_emaildomain, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, D1, V95, V96, V97, V98, V99, V100, V101, V102, V103, V104, V105, V106, V107, V108, V109, V110, V111, V112, V113, V114, V115, V116, V117, V118, V119, V120, V121, V122, V123, V124, V125, V126, V127, V128, V129, V130, V131, V132, V133, V134, V135, V136, V137, V167, V168, V169, V170, V171, V172, V173, V174, ...]
+Index: []
+
+[0 rows x 247 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>No existen filas duplicadas dentro de nuestro dataframe.</p>
+<ul class="simple">
+<li><p>Completar datos faltantes</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Columnas numéricas: Completar los datos faltantes de las columnas numéricas con la mediana</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columnas_con_faltantes</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">datatrain</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Crear un imputador para variables numéricas con la mediana</span>
+<span class="n">imputador_numerico</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+
+<span class="c1"># Seleccionar las columnas numéricas</span>
+<span class="n">columnas_numericas</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Imputar valores faltantes en las columnas numéricas</span>
+<span class="n">datatrain</span><span class="p">[</span><span class="n">columnas_numericas</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputador_numerico</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">datatrain</span><span class="p">[</span><span class="n">columnas_numericas</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Columnas tipo object</p></li>
+</ol>
+<p>Verificaremos el porcentaje de datos faltantes en cada columna.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener la cantidad de valores nulos en cada columna</span>
+<span class="n">valores_nulos_por_columna</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Obtener el tipo de variable en cada columna</span>
+<span class="n">tipos_de_variable</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="c1"># Filtrar las columnas que tienen valores nulos</span>
+<span class="n">columnas_con_datos_faltantes</span> <span class="o">=</span> <span class="n">valores_nulos_por_columna</span><span class="p">[</span><span class="n">valores_nulos_por_columna</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Número total de filas en el DataFrame</span>
+<span class="n">numero_total_filas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datatrain</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las columnas con datos faltantes, el tipo de variable, la cantidad de valores nulos y el porcentaje de datos faltantes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas con datos faltantes, tipo de variable y </span><span class="si">% d</span><span class="s2">e datos faltantes&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">columna</span><span class="p">,</span> <span class="n">cantidad_nulos</span> <span class="ow">in</span> <span class="n">columnas_con_datos_faltantes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">porcentaje_datos_faltantes</span> <span class="o">=</span> <span class="p">(</span><span class="n">cantidad_nulos</span> <span class="o">/</span> <span class="n">numero_total_filas</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">tipo_variable</span> <span class="o">=</span> <span class="n">tipos_de_variable</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columna &#39;</span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2">&#39; (</span><span class="si">{</span><span class="n">tipo_variable</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">cantidad_nulos</span><span class="si">}</span><span class="s2"> valores nulos (</span><span class="si">{</span><span class="n">porcentaje_datos_faltantes</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas con datos faltantes, tipo de variable y % de datos faltantes
+Columna &#39;id_15&#39; (object): 3248 valores nulos (2.25%)
+Columna &#39;id_16&#39; (object): 14893 valores nulos (10.33%)
+Columna &#39;id_28&#39; (object): 3255 valores nulos (2.26%)
+Columna &#39;id_29&#39; (object): 3255 valores nulos (2.26%)
+Columna &#39;id_31&#39; (object): 3951 valores nulos (2.74%)
+Columna &#39;id_35&#39; (object): 3248 valores nulos (2.25%)
+Columna &#39;id_36&#39; (object): 3248 valores nulos (2.25%)
+Columna &#39;id_37&#39; (object): 3248 valores nulos (2.25%)
+Columna &#39;id_38&#39; (object): 3248 valores nulos (2.25%)
+Columna &#39;DeviceType&#39; (object): 3423 valores nulos (2.37%)
+Columna &#39;DeviceInfo&#39; (object): 25567 valores nulos (17.73%)
+Columna &#39;card4&#39; (object): 184 valores nulos (0.13%)
+Columna &#39;card6&#39; (object): 178 valores nulos (0.12%)
+Columna &#39;P_emaildomain&#39; (object): 13391 valores nulos (9.28%)
+Columna &#39;R_emaildomain&#39; (object): 13150 valores nulos (9.12%)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con el fin de simplificar más el análisis se eliminarán las filas que no tengan datos en las siguientes columnas tipo object: ‘DiviceInfo’, ‘id_16’, ‘R_emaildomain’ y ‘P_emaildomain’</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una lista de las columnas</span>
+<span class="n">columnas_requeridas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DeviceInfo&#39;</span><span class="p">,</span> <span class="s1">&#39;id_16&#39;</span><span class="p">,</span> <span class="s1">&#39;R_emaildomain&#39;</span><span class="p">,</span> <span class="s1">&#39;P_emaildomain&#39;</span> <span class="p">]</span>
+
+<span class="c1"># Eliminar las filas que tienen valores faltantes en las columnas requeridas</span>
+<span class="n">datatrain</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">columnas_requeridas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verificar nuevamante el porcentaje de datos nulos en las columnas tipo object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener la cantidad de valores nulos en cada columna</span>
+<span class="n">valores_nulos_por_columna</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Obtener el tipo de variable en cada columna</span>
+<span class="n">tipos_de_variable</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="c1"># Filtrar las columnas que tienen valores nulos</span>
+<span class="n">columnas_con_datos_faltantes</span> <span class="o">=</span> <span class="n">valores_nulos_por_columna</span><span class="p">[</span><span class="n">valores_nulos_por_columna</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Número total de filas en el DataFrame</span>
+<span class="n">numero_total_filas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datatrain</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las columnas con datos faltantes, el tipo de variable, la cantidad de valores nulos y el porcentaje de datos faltantes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas con datos faltantes, tipo de variable y </span><span class="si">% d</span><span class="s2">e datos faltantes&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">columna</span><span class="p">,</span> <span class="n">cantidad_nulos</span> <span class="ow">in</span> <span class="n">columnas_con_datos_faltantes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">porcentaje_datos_faltantes</span> <span class="o">=</span> <span class="p">(</span><span class="n">cantidad_nulos</span> <span class="o">/</span> <span class="n">numero_total_filas</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">tipo_variable</span> <span class="o">=</span> <span class="n">tipos_de_variable</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columna &#39;</span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2">&#39; (</span><span class="si">{</span><span class="n">tipo_variable</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">cantidad_nulos</span><span class="si">}</span><span class="s2"> valores nulos (</span><span class="si">{</span><span class="n">porcentaje_datos_faltantes</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas con datos faltantes, tipo de variable y % de datos faltantes
+Columna &#39;id_31&#39; (object): 118 valores nulos (0.12%)
+Columna &#39;DeviceType&#39; (object): 7 valores nulos (0.01%)
+Columna &#39;card4&#39; (object): 107 valores nulos (0.11%)
+Columna &#39;card6&#39; (object): 104 valores nulos (0.11%)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Completar los datos nulos en las columnas tipo object con la moda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un imputador para variables categóricas con la moda</span>
+<span class="n">imputador_categorico</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
+
+<span class="c1"># Seleccionar las columnas categóricas</span>
+<span class="n">columnas_categoricas</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Imputar valores faltantes en las columnas categóricas</span>
+<span class="n">datatrain</span><span class="p">[</span><span class="n">columnas_categoricas</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputador_categorico</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">datatrain</span><span class="p">[</span><span class="n">columnas_categoricas</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 95389 entries, 2 to 144232
+Columns: 247 entries, TransactionID to V321
+dtypes: float64(230), object(17)
+memory usage: 180.5+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Tabla de frecuencia y diagrama de barras para la varible respuesta.</p></li>
+</ul>
+<p>El objetivo es detectar fraudes, nuestra variable de interés o respuesta es isFraud, en la cual <strong>0</strong> significa que No es una transacción fraudulenta y <strong>1</strong> significa que si lo es.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span><span class="o">.</span><span class="n">isFraud</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>isFraud
+0.0    87760
+1.0     7629
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cuenta de tipos de transacción&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;isFraud&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">datatrain</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;0 = No fraude - 1 = Fraude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e0a9bb8e84ba368603b9f015afd9174517b1ed2e824c7b44ff7c3e46909d6b70.png" src="_images/e0a9bb8e84ba368603b9f015afd9174517b1ed2e824c7b44ff7c3e46909d6b70.png" />
+</div>
+</div>
+<p>Evidentemente nuestros datos se encuentran desbalanceados, lo cual es entendible debido a que la mayoría de las transacciones realizadas por nuestros usuarios son transacciones voluntarias.</p>
+<ul class="simple">
+<li><p>Verificar correlación entre variables</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Varibles tipo objet</p></li>
+</ol>
+<p>Verificar el número de la columa en la que está mi varible de interes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numero_columna</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;isFraud&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_columna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+</div>
+</div>
+<p>Explorar cuales son los datos que son tipo object</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columnas_object</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># Imprimir las columnas enteras</span>
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">columnas_object</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id_12
+id_15
+id_16
+id_28
+id_29
+id_31
+id_35
+id_36
+id_37
+id_38
+DeviceType
+DeviceInfo
+ProductCD
+card4
+card6
+P_emaildomain
+R_emaildomain
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2_contingency</span>
+
+<span class="c1"># Lista de variables categóricas</span>
+<span class="n">categorical_variables</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">datatrain</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span>
+
+<span class="c1"># Variable objetivo</span>
+<span class="n">target_variable</span> <span class="o">=</span> <span class="s1">&#39;isFraud&#39;</span>
+
+<span class="c1"># Crear una lista para almacenar los resultados</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Calcular el chi-cuadrado y el valor p para cada combinación</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">categorical_variables</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="o">!=</span> <span class="n">target_variable</span><span class="p">:</span>
+        <span class="n">contingency_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">datatrain</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">datatrain</span><span class="p">[</span><span class="n">target_variable</span><span class="p">])</span>
+        <span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">chi2_contingency</span><span class="p">(</span><span class="n">contingency_table</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Variable&#39;</span><span class="p">:</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;Chi-squared&#39;</span><span class="p">:</span> <span class="n">chi2</span><span class="p">,</span> <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">})</span>
+
+<span class="c1"># Convertir la lista de resultados en un DataFrame</span>
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Variable   Chi-squared        p-value
+0           id_12     84.761981   3.365337e-20
+1           id_15   1249.445589  1.095398e-273
+2           id_16   1381.087878  2.704539e-302
+3           id_28   1226.794642  9.164928e-269
+4           id_29   1339.978145  2.320121e-293
+5           id_31   3972.614564   0.000000e+00
+6           id_35   1791.714815   0.000000e+00
+7           id_36    129.124246   6.370326e-30
+8           id_37    146.431767   1.044603e-33
+9           id_38    182.004954   1.768767e-41
+10     DeviceType    644.172222  4.135679e-142
+11     DeviceInfo  16229.818436   0.000000e+00
+12      ProductCD   1995.910934   0.000000e+00
+13          card4    311.179561   3.784875e-67
+14          card6    220.719191   1.178791e-48
+15  P_emaildomain   2525.998473   0.000000e+00
+16  R_emaildomain   2722.061481   0.000000e+00
+</pre></div>
+</div>
+</div>
+</div>
+<p>De acuerdo con la tabla anterior de relación de variables categóricas con la variable objetivo, eliminaremos las variables con chi-cuadrado más pequeño y p-value grande, las cuales son: id_12, id_36, id_37, id_38, card4 y card6</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una lista de las columnas</span>
+<span class="n">columnas_requeridas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id_12&#39;</span><span class="p">,</span> <span class="s1">&#39;id_36&#39;</span><span class="p">,</span> <span class="s1">&#39;id_37&#39;</span><span class="p">,</span> <span class="s1">&#39;id_38&#39;</span><span class="p">,</span> <span class="s1">&#39;card4&#39;</span><span class="p">,</span> <span class="s1">&#39;card6&#39;</span> <span class="p">]</span>
+
+<span class="c1"># Eliminar las filas que tienen valores faltantes en las columnas requeridas</span>
+<span class="n">datatrain</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">columnas_requeridas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pasar estas varibles tipo objects a variables numericas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dado que al intentar hacerlo con todas las variables arrojaba un dataframe con más de 2000 columnas y aparece el error ‘ErroMemory’ que no permite que el algoritmo funcione, procederemos a verificar la cantidad de datos únicos que tiene cada variable tipo objet.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cantidad_datos_unicos</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Lista para almacenar la cantidad de datos únicos por columna</span>
+<span class="n">lista_datos_unicos</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Diccionario para almacenar las listas de datos únicos por columna</span>
+
+<span class="n">categorical_variables</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">datatrain</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">categorical_variables</span><span class="p">:</span>
+    <span class="c1"># Obtener la cantidad de datos únicos para la columna actual</span>
+    <span class="n">cantidad</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datatrain</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">cantidad_datos_unicos</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">columna</span><span class="p">,</span> <span class="n">cantidad</span><span class="p">))</span>
+
+<span class="c1"># Imprimir la cantidad y lista de datos únicos por columna</span>
+<span class="k">for</span> <span class="n">columna</span><span class="p">,</span> <span class="n">cantidad</span> <span class="ow">in</span> <span class="n">cantidad_datos_unicos</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columna &#39;</span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2">&#39;: Cantidad de datos únicos = </span><span class="si">{</span><span class="n">cantidad</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columna &#39;id_12&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_15&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_16&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_28&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_29&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_31&#39;: Cantidad de datos únicos = 123
+Columna &#39;id_35&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_36&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_37&#39;: Cantidad de datos únicos = 2
+Columna &#39;id_38&#39;: Cantidad de datos únicos = 2
+Columna &#39;DeviceType&#39;: Cantidad de datos únicos = 2
+Columna &#39;DeviceInfo&#39;: Cantidad de datos únicos = 1690
+Columna &#39;ProductCD&#39;: Cantidad de datos únicos = 3
+Columna &#39;card4&#39;: Cantidad de datos únicos = 4
+Columna &#39;card6&#39;: Cantidad de datos únicos = 3
+Columna &#39;P_emaildomain&#39;: Cantidad de datos únicos = 59
+Columna &#39;R_emaildomain&#39;: Cantidad de datos únicos = 59
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con el fin de simplificar el análisis y poder realizar el VIF, eliminaremos las columnas ‘DeviceInfo’ e ‘id_31’, que son las variables que tienen mayor número de datos únicos que después de hacer el One Hot (dummies) se convertirán en columnas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatrain</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;DeviceInfo&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">datatrain</span> <span class="o">=</span> <span class="n">datatrain</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;id_31&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Al intentar hacer el VIF para reducir dimensionalidad aparece el error ‘MemoryError’ por ende, reduciremos la cantidad de filas. En este caso se tomo la decición de reducir de manera aleatoria la cantidad de filas que no son fraude, lo cual, paralelamente ayudará a reducir el desvalance de los datos</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Porcentaje de filas a mantener donde isFraud es igual a 10%</span>
+<span class="n">porcentaje_mantener</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Filtrar el DataFrame para obtener solo las filas donde isFraud es igual a 1</span>
+<span class="n">data_fraud</span> <span class="o">=</span> <span class="n">datatrain</span><span class="p">[</span><span class="n">datatrain</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Filtrar el DataFrame para obtener un porcentaje aleatorio de las filas donde isFraud es igual a 0</span>
+<span class="n">data_no_fraud</span> <span class="o">=</span> <span class="n">datatrain</span><span class="p">[</span><span class="n">datatrain</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="n">porcentaje_mantener</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">68</span><span class="p">)</span>
+
+<span class="c1"># Combinar los DataFrames filtrados</span>
+<span class="n">data_red</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_fraud</span><span class="p">,</span> <span class="n">data_no_fraud</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Separar los datos entre data y target</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos entre data y target</span>
+<span class="n">data_X</span> <span class="o">=</span> <span class="n">data_red</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;isFraud&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">data_red</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aplicar One Hot (dummies) a las variables tipo objet que tenemos para codificarlas y poder usarlas para la creación y evaluación de los modelos de predicción.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una lista para almacenar los nombres de las nuevas variables dummies</span>
+<span class="n">nombres_nuevas_variables</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Obtener las columnas de tipo &#39;object&#39;</span>
+<span class="n">columnas_object</span> <span class="o">=</span> <span class="n">data_X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Aplicar codificación one-hot y guardar los nombres de las nuevas variables</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data_X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columnas_object</span><span class="p">,</span> <span class="n">dummy_na</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">columnas_object</span><span class="p">)</span>
+
+<span class="c1"># Obtener los nombres de las nuevas variables y agregarlos a la lista</span>
+<span class="n">nombres_nuevas_variables</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Convertir columnas resultantes del One Hot a binario, parar de True y False a 1 y 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recorre las columnas específicas y convierte &#39;True&#39; y &#39;False&#39; a 1 y 0</span>
+<span class="n">columnas_a_convertir</span> <span class="o">=</span> <span class="p">[</span><span class="n">nombres_nuevas_variables</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">columnas_a_convertir</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aplicar VIF (<em>Variance Inflation Factor</em>) al dataframe que tenemos con el fin de reducir dimensionalidad por medio de la eliminación de columnas que están altamente correlacionadas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este es el código que se usó para hacer el VIF, dado que tardó aproximadamente 10 horas, los datos resultantes fueron descargados como un archivo .csv y a partir de este momento utilizaremos ese archivo.</p>
+<p class="rubric">Función para calcular el VIF para cada variable</p>
+<p>def calculate_vif(data_frame):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vif_data = pd.DataFrame()
+
+vif_data[&#39;Variable&#39;] = data_frame.columns
+
+vif_data[&#39;VIF&#39;] = [variance_inflation_factor(data_frame.values, i) for i in range(data_frame.shape[1])]
+
+return vif_data
+</pre></div>
+</div>
+<p class="rubric">Loop para calcular el VIF y eliminar variables con alto VIF</p>
+<p>threshold = 5  # Umbral para considerar un alto VIF</p>
+<p>while True:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vif_df = calculate_vif(data)
+
+max_vif = vif_df[&#39;VIF&#39;].max()
+
+if max_vif &gt; threshold:
+
+    # Encuentra la variable con el VIF más alto
+
+    variable_to_remove = vif_df[vif_df[&#39;VIF&#39;] == max_vif][&#39;Variable&#39;].iloc[0]
+
+    print(f&quot;Eliminando variable &#39;{variable_to_remove}&#39; con VIF = {max_vif}&quot;)
+
+    data = data.drop(columns=[variable_to_remove])
+
+else:
+
+    break
+</pre></div>
+</div>
+<p class="rubric">El DataFrame ‘data’ ahora contiene las variables resultantes después de la reducción</p>
+<p><a class="reference external" href="http://data.info">data.info</a>()</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/ProgramasML/ParcialMLUN/docs/dataVIF.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_01</th>
+      <th>id_02</th>
+      <th>id_05</th>
+      <th>id_06</th>
+      <th>id_11</th>
+      <th>id_13</th>
+      <th>id_17</th>
+      <th>id_19</th>
+      <th>id_20</th>
+      <th>TransactionDT</th>
+      <th>...</th>
+      <th>R_emaildomain_web.de</th>
+      <th>R_emaildomain_windstream.net</th>
+      <th>R_emaildomain_yahoo.co.jp</th>
+      <th>R_emaildomain_yahoo.co.uk</th>
+      <th>R_emaildomain_yahoo.com</th>
+      <th>R_emaildomain_yahoo.com.mx</th>
+      <th>R_emaildomain_yahoo.de</th>
+      <th>R_emaildomain_yahoo.es</th>
+      <th>R_emaildomain_yahoo.fr</th>
+      <th>R_emaildomain_ymail.com</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.00000</td>
+      <td>1.640500e+04</td>
+      <td>...</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+      <td>16405.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-11.539653</td>
+      <td>195595.374398</td>
+      <td>1.654922</td>
+      <td>-7.764279</td>
+      <td>99.771533</td>
+      <td>48.493935</td>
+      <td>193.956842</td>
+      <td>346.994270</td>
+      <td>414.39171</td>
+      <td>6.718439e+06</td>
+      <td>...</td>
+      <td>0.000792</td>
+      <td>0.000183</td>
+      <td>0.000183</td>
+      <td>0.000305</td>
+      <td>0.073392</td>
+      <td>0.004389</td>
+      <td>0.000244</td>
+      <td>0.000366</td>
+      <td>0.000610</td>
+      <td>0.001341</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>17.052198</td>
+      <td>164120.901192</td>
+      <td>5.421963</td>
+      <td>17.522378</td>
+      <td>1.086137</td>
+      <td>10.805096</td>
+      <td>31.234724</td>
+      <td>132.949604</td>
+      <td>147.94828</td>
+      <td>4.694878e+06</td>
+      <td>...</td>
+      <td>0.028140</td>
+      <td>0.013522</td>
+      <td>0.013522</td>
+      <td>0.017456</td>
+      <td>0.260787</td>
+      <td>0.066105</td>
+      <td>0.015614</td>
+      <td>0.019121</td>
+      <td>0.024683</td>
+      <td>0.036597</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-100.000000</td>
+      <td>603.000000</td>
+      <td>-38.000000</td>
+      <td>-100.000000</td>
+      <td>90.000000</td>
+      <td>11.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.00000</td>
+      <td>8.777500e+04</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-10.000000</td>
+      <td>82669.000000</td>
+      <td>0.000000</td>
+      <td>-8.000000</td>
+      <td>100.000000</td>
+      <td>49.000000</td>
+      <td>166.000000</td>
+      <td>266.000000</td>
+      <td>305.00000</td>
+      <td>2.170411e+06</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-5.000000</td>
+      <td>144260.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>52.000000</td>
+      <td>166.000000</td>
+      <td>321.000000</td>
+      <td>484.00000</td>
+      <td>5.946265e+06</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>-5.000000</td>
+      <td>253654.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>52.000000</td>
+      <td>225.000000</td>
+      <td>427.000000</td>
+      <td>549.00000</td>
+      <td>1.054287e+07</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.000000</td>
+      <td>998295.000000</td>
+      <td>44.000000</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>64.000000</td>
+      <td>228.000000</td>
+      <td>669.000000</td>
+      <td>657.00000</td>
+      <td>1.581088e+07</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 184 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Verificar distribución de los datos posterior VIF y disminución de filas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataunion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cuenta de tipos de transacción&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;isFraud&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dataunion</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;0 = No fraude - 1 = Fraude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/31fc1bce5eedf8a667e808dd698d2bed85ce8bec6af5945eefeaeeedf824b520.png" src="_images/31fc1bce5eedf8a667e808dd698d2bed85ce8bec6af5945eefeaeeedf824b520.png" />
+</div>
+</div>
+<p>Vemos que posterior al tratamiento de los datos tenemos un dataset más equilibrado en cuanto a datos positivos y negativos lo cual favorecerá la creación y evaluación de los modelos.</p>
+</section>
+<section id="visualizacion-y-analisis-de-variables">
+<h3>Visualización y Análisis de variables<a class="headerlink" href="#visualizacion-y-analisis-de-variables" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Análisis univariado</p></li>
+</ul>
+<p>Trazar histogramas de algunas de las catacteristicas (Caracteristicas no binarias)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ed37a4636c7c03e0b503c8628df6da510d566a9ef3fc710b0e6586d3aedc6eb0.png" src="_images/ed37a4636c7c03e0b503c8628df6da510d566a9ef3fc710b0e6586d3aedc6eb0.png" />
+</div>
+</div>
+<p>De los histogramas:</p>
+<p>Se evidencia simetría en los datos de la variable ‘id_05’.</p>
+<p>Por otro lado, vemos que las variables ‘id_02’, ‘id_19’ y ‘TransactionDT’ tiene sesgo a la derecha respectivamente.</p>
+<p>Finalmente, las variables con sesgo significativo hacia la izquierda son ‘id_60’, ‘id_20’ y posiblemente ‘card2’.</p>
+<p>Graficar diagrama de caja y bigote para estas variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">dataunion</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;isFraud&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">14</span><span class="p">]</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/347a52a85a7194263b3b2642fbbe118c085eec4784d7a940180bb7fe52bbe41e.png" src="_images/347a52a85a7194263b3b2642fbbe118c085eec4784d7a940180bb7fe52bbe41e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">dataunion</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;isFraud&#39;</span><span class="p">,</span><span class="s1">&#39;id_02&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e29cf03a212695a99d6977426a96528e28ac8158516d2961c0c30f353f8e175f.png" src="_images/e29cf03a212695a99d6977426a96528e28ac8158516d2961c0c30f353f8e175f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">dataunion</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;isFraud&#39;</span><span class="p">,</span><span class="s1">&#39;card1&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">10</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4111bd726ba7df1a3a58bc443e06c5d46726b7781b78464a344541faf2ac03df.png" src="_images/4111bd726ba7df1a3a58bc443e06c5d46726b7781b78464a344541faf2ac03df.png" />
+</div>
+</div>
+<p>De los diagramas de caja y bigote:</p>
+<p>Estos nos muestran desproporción en las escalas de los datos, por ejemplo ‘TransactionDT’ tiene valores muy superiores al resto de las variables.</p>
+<p>también, se hace evidente que variables como ‘id_01’, ‘id_06’ e ‘id_13’ tienes muchos datos atípicos, adicional las 3 tienen los datos atípicos hacia la cola izquierda de la curva, a diferencia de ‘TransactionATM’ que tiene los datos atípicos hacia la derecha.</p>
+<ul class="simple">
+<li><p>Análisis bivariado y multivariado</p></li>
+</ul>
+<p>Graficar la relación entre las distintas variables o características con nuestra variable de interés, así como la relación entre las distintas variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aumenta el tamaño de las etiquetas de los ejes</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="c1"># Tu código para crear el pairplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataunion</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;isFraud&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span> 
+             <span class="n">aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x2321d80d250&gt;
+</pre></div>
+</div>
+<img alt="_images/efd63b6633882ff9af90e9618298acdcdfadd2aa2df06ce3ad3da749cb30dc6c.png" src="_images/efd63b6633882ff9af90e9618298acdcdfadd2aa2df06ce3ad3da749cb30dc6c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataunion</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;id_01&#39;</span><span class="p">,</span><span class="s1">&#39;id_02&#39;</span><span class="p">,</span><span class="s1">&#39;id_05&#39;</span><span class="p">,</span><span class="s1">&#39;id_06&#39;</span><span class="p">,</span><span class="s1">&#39;id_11&#39;</span><span class="p">,</span><span class="s1">&#39;id_13&#39;</span><span class="p">,</span><span class="s1">&#39;id_17&#39;</span> <span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;isFraud&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9472e5b877770423d104c5418f6acfbe276ac4d5a34eb09c8f4895cf2a5c11fb.png" src="_images/9472e5b877770423d104c5418f6acfbe276ac4d5a34eb09c8f4895cf2a5c11fb.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="modelos-de-clasificacion">
+<h2>Modelos de Clasificación<a class="headerlink" href="#modelos-de-clasificacion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Librerías</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Librerías para Modelos</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>División de los datos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dividir los datos en conjuntos de entrenamiento y prueba</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">68</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+
+    <span class="c1"># Calcular la matriz de confusión</span>
+    <span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+    <span class="c1"># Crear una figura de matplotlib</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Utilizar seaborn para crear una representación visual de la matriz de confusión</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+            <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Negativo&#39;</span><span class="p">,</span> <span class="s1">&#39;Positivo&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Negativo&#39;</span><span class="p">,</span> <span class="s1">&#39;Positivo&#39;</span><span class="p">],</span> 
+            <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+
+    <span class="c1"># Configurar etiquetas y título con tamaños de fuente personalizados</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicciones&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valores Verdaderos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de Confusión&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> 
+
+    <span class="c1"># Mostrar la matriz de confusión</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">):</span>
+
+    <span class="c1"># Calcular la curva ROC</span>
+    <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+    <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+
+    <span class="c1"># Trazar la curva ROC</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Curva ROC (AUC = </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+
+    <span class="c1"># Configurar etiquetas y título con tamaños de fuente personalizados</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Falsos Positivos (FPR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Verdaderos Positivos (TPR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicciones&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># Mostrar la curva ROC</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="modelo-k-nn">
+<h3>Modelo K-NN<a class="headerlink" href="#modelo-k-nn" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, escalado y clasificador KNN</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>  <span class="c1"># Escalar las características</span>
+    <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">())</span>  <span class="c1"># Clasificador KNN</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el espacio de hiperparámetros para GridSearch</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;knn__n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>  <span class="c1"># Número de vecinos cercanos</span>
+    <span class="s1">&#39;knn__weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">],</span>  <span class="c1"># Pesos de los vecinos</span>
+    <span class="s1">&#39;knn__p&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Parámetro p para la distancia (1: distancia Manhattan, 2: distancia Euclidiana)</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_knn</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_knn</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_knn</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_knn</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_knn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_knn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_knn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_knn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 12 candidates, totalling 60 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.80
+Recall: 0.77
+F1-score: 0.78
+AUC: 0.80
+</pre></div>
+</div>
+<img alt="_images/8030b5b66c25a525e1e134d7b78779403fe8756eef22e5b038c340f3bc4bceb9.png" src="_images/8030b5b66c25a525e1e134d7b78779403fe8756eef22e5b038c340f3bc4bceb9.png" />
+<img alt="_images/7a33d6b266c0b9e5f294ec26e9fe150e013fa6c547c67ba78d29527e434a0fc2.png" src="_images/7a33d6b266c0b9e5f294ec26e9fe150e013fa6c547c67ba78d29527e434a0fc2.png" />
+</div>
+</div>
+</section>
+<section id="modelo-ridge">
+<h3>Modelo Ridge<a class="headerlink" href="#modelo-ridge" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, escalado y el clasificador Ridge</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>  <span class="c1"># Escalar las características</span>
+    <span class="p">(</span><span class="s1">&#39;ridge&#39;</span><span class="p">,</span> <span class="n">RidgeClassifier</span><span class="p">())</span>  <span class="c1"># Clasificador Ridge</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el espacio de hiperparámetros para GridSearch</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ridge__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>  <span class="c1"># Parámetro de regularización alpha</span>
+    <span class="s1">&#39;ridge__solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;svd&#39;</span><span class="p">,</span> <span class="s1">&#39;cholesky&#39;</span><span class="p">,</span> <span class="s1">&#39;lsqr&#39;</span><span class="p">,</span> <span class="s1">&#39;sparse_cg&#39;</span><span class="p">,</span> <span class="s1">&#39;sag&#39;</span><span class="p">,</span> <span class="s1">&#39;saga&#39;</span><span class="p">]</span>  <span class="c1"># Solucionador de Ridge</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_ridge</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_ridge</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_ridge</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_ridge</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 42 candidates, totalling 210 fits
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-lasso">
+<h3>Modelo Lasso<a class="headerlink" href="#modelo-lasso" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, escalado y clasificador lineal con penalidad L1</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>  <span class="c1"># Escalar las características</span>
+    <span class="p">(</span><span class="s1">&#39;lasso&#39;</span><span class="p">,</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;squared_error&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">))</span>  <span class="c1"># Clasificador lineal con penalidad L1 (Lasso)</span>
+<span class="p">])</span>
+
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lasso__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>  <span class="c1"># Parámetro de regularización alpha</span>
+    <span class="s1">&#39;lasso__max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>  <span class="c1"># Número máximo de iteraciones</span>
+    <span class="s1">&#39;lasso__fit_intercept&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>  <span class="c1"># Ajustar intercepción o no</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_lasso</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_lasso</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_lasso</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_lasso</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 36 candidates, totalling 180 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.46
+Recall: 0.56
+F1-score: 0.51
+AUC: 0.50
+</pre></div>
+</div>
+<img alt="_images/4a489a2d0af3cdcdaca663e4f73846c92f521d7a269e4dc0a69e31c585216ae7.png" src="_images/4a489a2d0af3cdcdaca663e4f73846c92f521d7a269e4dc0a69e31c585216ae7.png" />
+<img alt="_images/1f5fef98aee2916422fbfd1b97af09e59701f853cbccd2ed2511e6da124b4503.png" src="_images/1f5fef98aee2916422fbfd1b97af09e59701f853cbccd2ed2511e6da124b4503.png" />
+</div>
+</div>
+</section>
+<section id="modelo-naive-bayes">
+<h3>Modelo Naive Bayes<a class="headerlink" href="#modelo-naive-bayes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento y clasificador Naive Bayes Gaussiano</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;naive_bayes&#39;</span><span class="p">,</span> <span class="n">GaussianNB</span><span class="p">())</span>  <span class="c1"># Clasificador Naive Bayes Gaussiano</span>
+<span class="p">])</span>
+
+<span class="c1"># Ajustar el modelo en el conjunto de entrenamiento</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_NB</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_NB</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_NB</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_NB</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_NB</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_NB</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_NB</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_NB</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.47
+Recall: 0.97
+F1-score: 0.63
+AUC: 0.50
+</pre></div>
+</div>
+<img alt="_images/0153f4fbecd9140d8650465235034b143406883edad20767048c959dd81d6658.png" src="_images/0153f4fbecd9140d8650465235034b143406883edad20767048c959dd81d6658.png" />
+<img alt="_images/76795e9420569b9f85d131c4000cbff39328b418bc078325dedd43ce9653da4f.png" src="_images/76795e9420569b9f85d131c4000cbff39328b418bc078325dedd43ce9653da4f.png" />
+</div>
+</div>
+</section>
+<section id="modelo-xgboots">
+<h3>Modelo XGBoots<a class="headerlink" href="#modelo-xgboots" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, sin escalar (los arboles de decisión no lo requieren) y clasificador XGBoost</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;xgboost&#39;</span><span class="p">,</span> <span class="n">XGBClassifier</span><span class="p">())</span>  <span class="c1"># Clasificador XGBoost</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el espacio de hiperparámetros para GridSearch</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;xgboost__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>  <span class="c1"># Número de árboles</span>
+    <span class="s1">&#39;xgboost__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>  <span class="c1"># Tasa de aprendizaje</span>
+    <span class="s1">&#39;xgboost__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>  <span class="c1"># Profundidad máxima del árbol</span>
+    <span class="s1">&#39;xgboost__min_child_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># Peso mínimo de un hijo</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_XG</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_XG</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_XG</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_XG</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># Utilizando probabilidad de clase positiva</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_XG</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_XG</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_XG</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_XG</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 81 candidates, totalling 405 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.86
+Recall: 0.62
+F1-score: 0.72
+AUC: 0.86
+</pre></div>
+</div>
+<img alt="_images/e32415d69239c0cd121a2c971d387af3f14d01eea6d582e8e2e3c82c80eed353.png" src="_images/e32415d69239c0cd121a2c971d387af3f14d01eea6d582e8e2e3c82c80eed353.png" />
+<img alt="_images/d1f33af3464d81c22db153f5659df7779f3b5f091f1ec6ef886f4a46f35b2519.png" src="_images/d1f33af3464d81c22db153f5659df7779f3b5f091f1ec6ef886f4a46f35b2519.png" />
+</div>
+</div>
+</section>
+<section id="modelo-svm">
+<h3>Modelo SVM<a class="headerlink" href="#modelo-svm" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, escalado y clasificador SVM lineal</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>  <span class="c1"># Escalar las características</span>
+    <span class="p">(</span><span class="s1">&#39;svm&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># Clasificador SVM lineal</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el espacio de hiperparámetros para GridSearch</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;svm__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Parámetro de regularización C</span>
+    <span class="s1">&#39;svm__kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">],</span>  <span class="c1"># Tipo de kernel</span>
+    <span class="s1">&#39;svm__gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">],</span>  <span class="c1"># Parámetro gamma para kernel RBF</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_SVM</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_SVM</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_SVM</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_SVM</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>  <span class="c1"># Utilizando funcion de desición</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_SVM</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_SVM</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_SVM</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_SVM</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 12 candidates, totalling 60 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.81
+Recall: 0.70
+F1-score: 0.75
+AUC: 0.85
+</pre></div>
+</div>
+<img alt="_images/6c2f3f9baa1b90653061ca724455e03a21906fa2ba0933836263334101f9ecb4.png" src="_images/6c2f3f9baa1b90653061ca724455e03a21906fa2ba0933836263334101f9ecb4.png" />
+<img alt="_images/ba19abe48b3e210fde23b8a904213fda37c4909eff1090c7e05cf5ff690c0da2.png" src="_images/ba19abe48b3e210fde23b8a904213fda37c4909eff1090c7e05cf5ff690c0da2.png" />
+</div>
+</div>
+</section>
+<section id="modelo-mpl">
+<h3>Modelo MPL<a class="headerlink" href="#modelo-mpl" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline con preprocesamiento, escalado y clasificador MLP</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>  <span class="c1"># Escalar las características</span>
+    <span class="p">(</span><span class="s1">&#39;mlp&#39;</span><span class="p">,</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">68</span><span class="p">))</span>  <span class="c1"># Clasificador MLP</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el espacio de hiperparámetros para GridSearch</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;mlp__hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">50</span><span class="p">,),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)],</span>  <span class="c1"># Tamaño de las capas ocultas</span>
+    <span class="s1">&#39;mlp__activation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="s1">&#39;logistic&#39;</span><span class="p">],</span>  <span class="c1"># Función de activación</span>
+    <span class="s1">&#39;mlp__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Parámetro de regularización alpha</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear un objeto GridSearchCV para buscar la mejor combinación de hiperparámetros</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo utilizando GridSearchCV en el conjunto de entrenamiento</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor modelo ajustado</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Realizar predicciones en el conjunto de prueba</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular las métricas de evaluación en el conjunto de prueba</span>
+<span class="n">precision_MPL</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall_MPL</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_MPL</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">roc_auc_MPL</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Utilizando la probabilidad de clase positiva</span>
+
+<span class="c1"># Imprimir las métricas</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión: </span><span class="si">{</span><span class="n">precision_MPL</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall_MPL</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1-score: </span><span class="si">{</span><span class="n">f1_MPL</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_MPL</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_prob</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 36 candidates, totalling 180 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión: 0.88
+Recall: 0.79
+F1-score: 0.84
+AUC: 0.93
+</pre></div>
+</div>
+<img alt="_images/d71dd378325ff41e809f464d4f9474774cafae9988bcecc22f9bbfc9ee299824.png" src="_images/d71dd378325ff41e809f464d4f9474774cafae9988bcecc22f9bbfc9ee299824.png" />
+<img alt="_images/d5d22765c0f024ed6e52e9c5959fc2c0d4fe414b10d1fc36a5ae9c747553a565.png" src="_images/d5d22765c0f024ed6e52e9c5959fc2c0d4fe414b10d1fc36a5ae9c747553a565.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="resultados-de-los-modelos">
+<h2>Resultados de los Modelos<a class="headerlink" href="#resultados-de-los-modelos" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombres de los modelos</span>
+<span class="n">nombres_modelos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;K-NN&#39;</span><span class="p">,</span> <span class="s1">&#39;Ridge&#39;</span><span class="p">,</span> <span class="s1">&#39;Lasso&#39;</span><span class="p">,</span> <span class="s1">&#39;Naive Bayes&#39;</span><span class="p">,</span> <span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span> <span class="s1">&#39;SVM&#39;</span><span class="p">,</span> <span class="s1">&#39;MLP&#39;</span><span class="p">]</span>
+
+<span class="c1"># Definir las listas de métricas para cada modelo</span>
+<span class="n">precission_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">precision_knn</span><span class="p">,</span> <span class="n">precision_ridge</span><span class="p">,</span> <span class="n">precision_lasso</span><span class="p">,</span> <span class="n">precision_NB</span><span class="p">,</span> <span class="n">precision_XG</span><span class="p">,</span> <span class="n">precision_SVM</span><span class="p">,</span> <span class="n">precision_MPL</span><span class="p">]</span>
+<span class="n">recall_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">recall_knn</span><span class="p">,</span> <span class="n">recall_ridge</span><span class="p">,</span> <span class="n">recall_lasso</span><span class="p">,</span> <span class="n">recall_NB</span><span class="p">,</span> <span class="n">recall_XG</span><span class="p">,</span> <span class="n">recall_SVM</span><span class="p">,</span> <span class="n">recall_MPL</span><span class="p">]</span>
+<span class="n">f1_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">f1_knn</span><span class="p">,</span> <span class="n">f1_ridge</span><span class="p">,</span> <span class="n">f1_lasso</span><span class="p">,</span> <span class="n">f1_NB</span><span class="p">,</span> <span class="n">f1_XG</span><span class="p">,</span> <span class="n">f1_SVM</span><span class="p">,</span> <span class="n">f1_MPL</span><span class="p">]</span>
+<span class="n">AUC_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">roc_auc_knn</span><span class="p">,</span> <span class="n">roc_auc_ridge</span><span class="p">,</span> <span class="n">roc_auc_lasso</span><span class="p">,</span> <span class="n">roc_auc_NB</span><span class="p">,</span> <span class="n">roc_auc_XG</span><span class="p">,</span> <span class="n">roc_auc_SVM</span><span class="p">,</span> <span class="n">roc_auc_MPL</span><span class="p">]</span>
+
+<span class="c1"># Crear un DataFrame para almacenar las métricas</span>
+<span class="n">df_resultados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="n">nombres_modelos</span><span class="p">,</span>
+    <span class="s1">&#39;precission&#39;</span><span class="p">:</span> <span class="n">precission_scores</span><span class="p">,</span>
+    <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="n">recall_scores</span><span class="p">,</span>
+    <span class="s1">&#39;f1-score&#39;</span><span class="p">:</span> <span class="n">f1_scores</span><span class="p">,</span>
+    <span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="n">AUC_scores</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_resultados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Modelo  precission    recall  f1-score       AUC
+0         K-NN    0.796397  0.765879  0.780840  0.798051
+1        Ridge    0.796930  0.708661  0.750208  0.776042
+2        Lasso    0.462576  0.558005  0.505829  0.497938
+3  Naive Bayes    0.465116  0.965879  0.627879  0.501374
+4      XGBoost    0.862573  0.619423  0.721051  0.856403
+5          SVM    0.805039  0.704462  0.751400  0.853157
+6          MLP    0.880233  0.794751  0.835310  0.925171
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mejor-modelo-basado-en-la-metrica-auc">
+<h3>Mejor modelo basado en la metrica AUC<a class="headerlink" href="#mejor-modelo-basado-en-la-metrica-auc" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encontrar el índice del modelo con el AUC más alto</span>
+<span class="n">indice_mejor_auc</span> <span class="o">=</span> <span class="n">AUC_scores</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">AUC_scores</span><span class="p">))</span>
+
+<span class="c1"># Obtiener el nombre del modelo con el AUC más alto</span>
+<span class="n">mejor_modelo</span> <span class="o">=</span> <span class="n">nombres_modelos</span><span class="p">[</span><span class="n">indice_mejor_auc</span><span class="p">]</span>
+
+<span class="c1"># Mostrar el modelo con el RMSE más bajo y su valor de RMSE</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El modelo con el AUC más alto es </span><span class="si">{</span><span class="n">mejor_modelo</span><span class="si">}</span><span class="s2"> con un AUC = </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">AUC_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El modelo con el AUC más alto es MLP con un AUC = 0.9251711651655741
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+
+<span class="c1"># Gráfica de Recall</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">nombres_modelos</span><span class="p">,</span> <span class="n">recall_scores</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Recall Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparación de Recall entre Modelos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Gráfica de AUC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">nombres_modelos</span><span class="p">,</span> <span class="n">AUC_scores</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;AUC Score&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparación de AUC entre Modelos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/52a6d4584d3ff355e9fc7cc1a24cabd78c8d37c9181b713702df81704e1b8f47.png" src="_images/52a6d4584d3ff355e9fc7cc1a24cabd78c8d37c9181b713702df81704e1b8f47.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusiones">
+<h2>Conclusiones<a class="headerlink" href="#conclusiones" title="Permalink to this heading">#</a></h2>
+<p>En el contexto de desarrollar un modelo predictivo para detectar fraudes en transacciones bancarias, es esencial considerar tanto el AUC (metrica que fue pedida en el ejercicio) como el recall para determinar el mejor modelo. El AUC proporciona una medida general de la capacidad del modelo para distinguir entre transacciones legítimas y fraudulentas, mientras que el recall se enfoca en la capacidad del modelo para detectar todos los fraudes, minimizando los falsos negativos.</p>
+<p>Observando las métricas proporcionadas para los diferentes modelos podemos inferir lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>El modelo MLP muestra el AUC más alto (0.925) de todos los modelos, lo que sugiere que tiene un excelente poder de discriminación entre transacciones legítimas y fraudulentas. Además, tiene un recall de 0.794, lo que indica que puede detectar una cantidad significativa de fraudes.</p></li>
+<li><p>El modelo XGBoost también presenta un alto AUC (0.856) y un recall razonable (0.619). Esto lo convierte en una buena opción, aunque no alcanza el nivel de recall del MLP.</p></li>
+<li><p>El modelo K-NN y el SVM también tienen buenos valores de AUC (0.798 y 0.853 respectivamente) y recall (0.765 y 0.704 respectivamente). Estos modelos pueden ser considerados como alternativas viables.</p></li>
+<li><p>Por otro lado, los modelos Ridge y Lasso tienen AUC y recall más bajos que los otros modelos, siendo Lasso el más bajo con 0.497. Esto significa que podrían perder algunos fraudes importantes.</p></li>
+<li><p>El modelo Naive Bayes tiene un AUC bajo (0.501), pero tiene el recall más alto (0.965), esto se debe a que tiende a clasificar muchas transacciones como fraudulentas (se puede ver en la matriz de confusión de este modelo), lo que resulta en un alto número de falsos positivos.</p></li>
+</ol>
+<p>Dado que es probable que el banco considere crítico detectar todos los fraudes, el recall es una métrica esencial en este contexto. Basándonos en el equilibrio entre AUC y recall, el modelo MLP parece ser la mejor opción, ya que tiene un alto AUC y un recall razonablemente bueno.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Parcial ML</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ParcialML-LindaHerrera-Regresion-V3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ejercicio de Regresión</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-analisis-exploratorio-de-datos">EDA - Análisis Exploratorio de Datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-datos-y-librerias">Descargar datos y librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-y-limpieza-de-datos">Exploración y limpieza de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-y-analisis-de-variables">Visualización y Análisis de variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-clasificacion">Modelos de Clasificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-k-nn">Modelo K-NN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge">Modelo Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lasso">Modelo Lasso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-naive-bayes">Modelo Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboots">Modelo XGBoots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-svm">Modelo SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-mpl">Modelo MPL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-de-los-modelos">Resultados de los Modelos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejor-modelo-basado-en-la-metrica-auc">Mejor modelo basado en la metrica AUC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones">Conclusiones</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linda Herrera
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
